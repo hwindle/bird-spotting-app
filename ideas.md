@@ -11,6 +11,7 @@ Using an object in an array for data storage -
 local storage.
 
 ## Extras
+nav with page section links
 Pictures of the birds with radio buttons.
 Bird status (injured, juvenile, moved).
 Time and date spotted.

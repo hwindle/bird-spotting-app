@@ -82,6 +82,7 @@ populateSpeciesList(birdSpecies);
  * and store in local storage
  */
 
+
 function addBird(event) {
   event.preventDefault();
   const locationField = document.querySelector('#location');
@@ -93,14 +94,13 @@ function addBird(event) {
 
   // add other fields here
   const birdObject = {
+    id: localStorage.length.toString(),
     location: locationField.value,
     number: numberBirds.value,
     species: speciesField.value,
   };
-
-  //console.log(birdObject);
   setBirdInfo(birdObject);
-  renderBirds(getLocalStorageItem('currentBirds'));
+  renderBirds();
 }
 
 const addSubmitBtn = document.querySelector('input#add-submit');
@@ -108,14 +108,11 @@ addSubmitBtn.addEventListener('click', addBird);
 
 // write bird object to local storage
 function setBirdInfo(bird) {
-  const currentBirds = [];
-  currentBirds.push(bird);
-  try {
-    localStorage.setItem('currentBirds', JSON.stringify(currentBirds));
-    // console.log(currentBirds);
-  } catch(error) {
-    console.error(error);
-  }  
+  if (typeof(bird) === 'object') {
+    window.localStorage.setItem(bird.id, JSON.stringify(bird));
+  } else {
+    console.log('Bird should be an object');
+  }
 }
 
 /**
@@ -139,22 +136,22 @@ clearFormButton.addEventListener('click', clearBirdForm);
  * list of current Birds from the array of objects in local storage.
  */
 const getLocalStorageItem = (item) => {
-  if (!localStorage.getItem(item)) {
+  if (!window.localStorage.getItem(item)) {
     return console.error('Local storage key not found');
   }
 
-  return localStorage.getItem(item);
+  return JSON.parse(window.localStorage.getItem(item));
 };
 
-function renderBirds(birdList) {
+function renderBirds() {
   // get the bird list element to append to.
   const sectionBirdList = document.querySelector('#bird-list');
   const article = document.createElement('article');
   article.setAttribute('class', 'bird');
-  // remove double quotes around object keys
-  birdList = JSON.parse(birdList);
-
-  for (const bird of birdList) {
+  // go over each key in localStorage
+  for (let i = 0; i < localStorage.length; i++) {
+    const bird = getLocalStorageItem(i.toString());
+    //console.dir(bird);
     // get the bird picture and display name from array at the top
     // find correct birdSpecies object
     const wildfowl = birdSpecies.filter(fowl => fowl.optionName === bird.species);
@@ -164,6 +161,7 @@ function renderBirds(birdList) {
       <div class="flex-wrapper">\n
         <img class="species-pic" src="${birdPic}" alt="${birdCommonName}" />\n
         <div class="bird-info">\n
+          <p id="hidden-id">${bird.id}</p>\n
           <p class="location">${bird.location}</p>\n
           <p class="number">Number: ${bird.number}</p>\n
         </div>\n
@@ -173,11 +171,27 @@ function renderBirds(birdList) {
       </div>`;
     
     // append the article to sectionBirdList
-    sectionBirdList.appendChild(article);
-  }
-  // add event listener for delete button
+    sectionBirdList.append(article);
+  } 
 }
 
-const ducksTest = getLocalStorageItem('currentBirds');
-console.dir(ducksTest);
-renderBirds(ducksTest);
+// renderBirds after a page refresh or when first loading page.
+window.addEventListener('load', renderBirds);
+
+// delete button stuff
+// add event listener for delete button
+const deleteBtn = document.querySelector('button.delete.bird');
+deleteBtn.addEventListener('click', (e) => {
+  //e.preventDefault();
+  // remove the grandparent article from the DOM
+  const article = e.target.parentNode.parentNode;
+  console.log(article);
+  const idElement = article.querySelector('p#hidden-id');
+  console.log('delete: ', idElement.textContent);
+  // remove the object from the currentBirds list
+
+  // set the localStorage object again.
+});
+
+// try setting each localStorage bird to be an id key (number) and an
+// object - which would be easier to debug/delete items for

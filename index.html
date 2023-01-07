@@ -17,7 +17,7 @@
     <form id="survey-form">
       <div class="form-row">
         <label for="location" id="name-label">Location
-          <input type="text" id="location" placeholder="sighting location" class="control" required>
+          <input type="text" id="location" placeholder="sighting location" class="control" pattern="[a-zA-Z -0-9]*" required>
         </label>
       </div>
       <div class="form-row">
@@ -25,26 +25,15 @@
           <input type="number" id="number" min="0" max="50" placeholder="1" class="control" required>
         </label>
       </div>
-      <div class="form-row">
+      <div class="form-row" id="bird-species-data">
+        <!-- the select gets filled in, or radio buttons are added here -->
         <label for="species">Type of bird</label>
         <select id="species" class="control">
-          <option value="mallard">Mallard duck</option>
-          <option value="pekin">Pekin duck</option>
-          <option value="tufted">Tufted duck</option>
-          <option value="Shoveller">Shoveller duck</option>
-          <option value="mandarin">Mandarin duck</option>
-          <option value="mute-swan">Mute swan</option>
-          <option value="magpie">Magpie</option>
-          <option value="canada-goose">Canada Goose</option>
-          <option value="greylag-goose">Greylag Goose</option>
-          <option value="coot">Coot</option>
-          <option value="moorhen">Moorhen</option>
-          <option value="great-crested-grebe">Great Crested Grebe</option>
         </select>
       </div>
       <div class="form-row">
         <button id="clear-form">Clear</button>
-        <input type="submit" id="submit" value="Submit" class="control">
+        <input type="submit" id="add-submit" value="Submit" class="control">
       </div>
     </form>
   </section>
@@ -135,6 +124,7 @@
   </section>
 </main>
 
-
+  <!-- scripts -->
+  <script src="JS/app.js"></script>
 </body>
 </html>

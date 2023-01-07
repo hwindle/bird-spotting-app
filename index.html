@@ -3,74 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bird Survey</title>
+  <title>Bird Spotting App</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   
 <main>
   <header>
-    <h1 id="title">Bird Survey</h1>
-    <p id="description">Describe Your Bird Watching Habits</p>
+    <h1 id="title">Bird Spotting</h1>
+    <p id="description">Please input any bird sightings, or remove any birds that have disappeared.</p>
   </header>
   <section>
     <form id="survey-form">
       <div class="form-row">
-        <label for="name" id="name-label">Name
-          <input type="text" id="name" placeholder="first name" class="control" required>
+        <label for="location" id="name-label">Location
+          <input type="text" id="location" placeholder="sighting location" class="control" required>
         </label>
       </div>
       <div class="form-row">
-        <label for="email" id="email-label" class="control">Email
-          <input type="email" id="email" placeholder="me@example.com" class="control" required>
+        <label for="number" id="number-label">Number of birds
+          <input type="number" id="number" min="0" max="50" placeholder="1" class="control" required>
         </label>
       </div>
       <div class="form-row">
-        <label for="number" id="number-label">Number of ducks counted
-          <input type="number" id="number" min="0" max="50" placeholder="3" class="control" required>
-        </label>
-      </div>
-      <div class="form-row">
-        <label for="dropdown">Duck species counted</label>
-        <select id="dropdown" class="control">
-          <option value="mallard">Mallard</option>
-          <option value="pekin">Pekin</option>
+        <label for="species">Type of bird</label>
+        <select id="species" class="control">
+          <option value="mallard">Mallard duck</option>
+          <option value="pekin">Pekin duck</option>
           <option value="tufted">Tufted duck</option>
           <option value="Shoveller">Shoveller duck</option>
           <option value="mandarin">Mandarin duck</option>
+          <option value="mute-swan">Mute swan</option>
+          <option value="magpie">Magpie</option>
+          <option value="canada-goose">Canada Goose</option>
+          <option value="greylag-goose">Greylag Goose</option>
+          <option value="coot">Coot</option>
+          <option value="moorhen">Moorhen</option>
+          <option value="great-crested-grebe">Great Crested Grebe</option>
         </select>
-      </div>
-      <div class="form-row">
-        <fieldset>
-          <legend>Is this your first visit?</legend>
-          <label for="first-visit-yes" class="mobile-form-field">Yes 
-            <input type="radio" name="first-visit" value="yes" id="first-visit-yes" class="control">
-          </label>
-          <label for="first-visit-no" class="mobile-form-field">No 
-            <input type="radio" name="first-visit" value="no" id="first-visit-no" class="control" checked>
-          </label>
-        </fieldset>
-      </div>
-      <div class="form-row">
-        <fieldset>
-          <legend>Birds Spotted</legend>
-          <label for="swan" class="mobile-form-field">Mute swan
-            <input type="checkbox" id="swan" value="swan" class="control">
-          </label>
-          <label for="heron" class="mobile-form-field">Heron
-            <input type="checkbox" id="heron" value="heron" class="control">
-          </label>
-          <label for="goose" class="mobile-form-field">Goose
-            <input type="checkbox" id="goose" value="goose" class="control">
-          </label>
-          <label for="mallard" class="mobile-form-field">Mallard
-            <input type="checkbox" name="mallard" id="mallard" value="mallard" class="control" checked>
-          </label>
-        </fieldset>
-      </div>
-      <div class="form-row">
-        <h4>Bird Watching Notes</h4>
-        <textarea placeholder="weather, photos taken"></textarea>
       </div>
       <div class="form-row">
         <input type="submit" id="submit" value="Submit" class="control">

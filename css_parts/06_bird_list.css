@@ -1,0 +1,14 @@
+/*** BIRD LIST ***/
+section#bird-list {
+  background-color: var(--form);
+  color: var(--form-text);
+  display: flex;
+}
+
+article.bird {
+  background-color: #fff;
+  flex-basis: 400px;
+  padding: 0.8em;
+  border: 1px solid var(--form-text);
+  border-radius: 0.4em;
+}

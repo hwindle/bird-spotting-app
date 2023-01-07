@@ -1,0 +1,13 @@
+:root {
+  --form: rgb(182, 193, 152);
+  --form-text: rgb(10, 10, 10);
+  --dark-green: rgb(32, 48, 2);
+  --mid-green: rgb(90, 100, 70);
+  --orange: rgb(212, 154, 36);
+}
+
+body {
+  font-family: Roboto, Canterell,'Liberation-sans', sans-serif;
+  font-size: 16px;
+  background: var(--dark-green);
+}

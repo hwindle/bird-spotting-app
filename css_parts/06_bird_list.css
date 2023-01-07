@@ -1,14 +1,70 @@
 /*** BIRD LIST ***/
 section#bird-list {
-  background-color: var(--form);
   color: var(--form-text);
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+h2.section-title {
+  margin: 2rem 0;
+  text-align: center;
+  color: var(--form);
 }
 
 article.bird {
+  margin: 0.6rem 0;
   background-color: #fff;
-  flex-basis: 400px;
-  padding: 0.8em;
   border: 1px solid var(--form-text);
   border-radius: 0.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+article.bird > h2.bird-title {
+  width: 100%;
+  text-align: center;
+  color: var(--mid-green);
+  line-height: 2;
+  border-bottom: 2px solid var(--orange);
+}
+
+article.bird > div.flex-wrapper {
+  flex-grow: 1;
+
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+img.species-pic {
+  min-width: 100px;
+  max-width: 200px;
+  height: auto;
+  border: 2px solid var(--orange);
+}
+
+div.bird-info {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+article.bird > div.buttons > .bird {
+  margin: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: var(--dark-green);
+  color: white;
+  border: 0;
+}
+
+article.bird > div.buttons > .bird.delete:hover,
+article.bird > div.buttons > .bird.delete:focus {
+  background-color: var(--red);
 }

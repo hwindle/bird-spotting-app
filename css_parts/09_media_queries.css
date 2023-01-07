@@ -1,7 +1,20 @@
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 699px) {
   .mobile-form-field {
     display: block;
     max-width: 80%;
     margin: 0 auto;
   }
+
+  section#bird-list {
+    display: block;
+  }
+}
+
+/*** TABLETS ***/
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+  section#bird-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
 }

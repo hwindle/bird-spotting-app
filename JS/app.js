@@ -100,6 +100,7 @@ function addBird(event) {
 
   //console.log(birdObject);
   setBirdInfo(birdObject);
+  renderBirds(getLocalStorageItem('currentBirds'));
 }
 
 const addSubmitBtn = document.querySelector('input#add-submit');
@@ -107,10 +108,11 @@ addSubmitBtn.addEventListener('click', addBird);
 
 // write bird object to local storage
 function setBirdInfo(bird) {
-  let currentBirds = [];
+  const currentBirds = [];
   currentBirds.push(bird);
   try {
-    localStorage.setItem('currentBirds', currentBirds);
+    localStorage.setItem('currentBirds', JSON.stringify(currentBirds));
+    // console.log(currentBirds);
   } catch(error) {
     console.error(error);
   }  
@@ -131,3 +133,51 @@ function clearBirdForm(event) {
 
 const clearFormButton = document.querySelector('button#clear-form');
 clearFormButton.addEventListener('click', clearBirdForm);
+
+/**
+ * renderBirds function - populates the
+ * list of current Birds from the array of objects in local storage.
+ */
+const getLocalStorageItem = (item) => {
+  if (!localStorage.getItem(item)) {
+    return console.error('Local storage key not found');
+  }
+
+  return localStorage.getItem(item);
+};
+
+function renderBirds(birdList) {
+  // get the bird list element to append to.
+  const sectionBirdList = document.querySelector('#bird-list');
+  const article = document.createElement('article');
+  article.setAttribute('class', 'bird');
+  // remove double quotes around object keys
+  birdList = JSON.parse(birdList);
+
+  for (const bird of birdList) {
+    // get the bird picture and display name from array at the top
+    // find correct birdSpecies object
+    const wildfowl = birdSpecies.filter(fowl => fowl.optionName === bird.species);
+    const birdPic = wildfowl[0].picUrl;
+    const birdCommonName = wildfowl[0].displayName;
+    article.innerHTML = `<h2 class="bird-title">${birdCommonName}</h2>\n
+      <div class="flex-wrapper">\n
+        <img class="species-pic" src="${birdPic}" alt="${birdCommonName}" />\n
+        <div class="bird-info">\n
+          <p class="location">${bird.location}</p>\n
+          <p class="number">Number: ${bird.number}</p>\n
+        </div>\n
+        </div>\n
+      <div class="buttons">\n
+        <button class="delete bird">Delete</button>\n
+      </div>`;
+    
+    // append the article to sectionBirdList
+    sectionBirdList.appendChild(article);
+  }
+  // add event listener for delete button
+}
+
+const ducksTest = getLocalStorageItem('currentBirds');
+console.dir(ducksTest);
+renderBirds(ducksTest);

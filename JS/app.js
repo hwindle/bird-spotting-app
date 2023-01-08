@@ -81,6 +81,7 @@ populateSpeciesList(birdSpecies);
  * Third: create a setBirdInfo function to append object to an array
  * and store in local storage
  */
+var globalId = 0;
 
 function addBird(event) {
   event.preventDefault();
@@ -90,15 +91,21 @@ function addBird(event) {
   if (numberBirds.value > 100) {
     numberBirds.value = 100;
   }
-
+  globalId += 1;
   // add other fields here
   const birdObject = {
-    id: localStorage.length.toString(),
+    id: globalId.toString(),
     location: locationField.value,
     number: numberBirds.value,
     species: speciesField.value,
   };
-  setBirdInfo(birdObject);
+  try {
+    setBirdInfo(birdObject);
+    console.dir(birdObject);
+  } catch(error) {
+    console.log(error);
+    console.dir(birdObject);
+  }
   getAllBirds();
 }
 
@@ -155,10 +162,10 @@ function getAllBirds() {
   let birdArray = [];
   // go over each key in localStorage
   let keys = Object.keys(localStorage);
-  for (const key in keys) {
-    console.log('Key index: ', key, typeof key);
+  for (const key of keys) {
     birdArray.push(getLocalStorageItem(key));
   }
+  console.dir(birdArray);
   birdArray.forEach((animal) => renderBird(animal));
 }
 
@@ -169,9 +176,7 @@ function renderBird(bird) {
   article.setAttribute('class', 'bird');
   // get the bird picture and display name from array at the top
   // find correct birdSpecies object
-  const wildfowl = birdSpecies.filter(
-    (fowl) => fowl.optionName === bird.species
-  );
+  const wildfowl = birdSpecies.filter(fowl => fowl.optionName === bird.species);
   const birdPic = wildfowl[0].picUrl;
   const birdCommonName = wildfowl[0].displayName;
   article.innerHTML = `<h2 class="bird-title">${birdCommonName}</h2>\n
@@ -195,7 +200,3 @@ function renderBird(bird) {
 
 getAllBirds();
 
-// try setting each localStorage bird to be an id key (number) and an
-// object - which would be easier to debug/delete items for
-// renderBirds after a page refresh or when first loading page.
-//window.location.reload(renderBirds);

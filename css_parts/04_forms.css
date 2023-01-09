@@ -98,7 +98,7 @@ input[type='checkbox'] ~ label {
   vertical-align: middle;
 }
 
-input#add-submit, button#clear-form {
+input#add-submit, input#clear-form {
   margin: auto 0;
   height: 4rem;
   font-size: 1.5rem;
@@ -117,13 +117,13 @@ input#add-submit:focus {
   color: black;
 }
 
-button#clear-form {
+input#clear-form {
   background-color: var(--form);
   color: var(--dark-green);
 }
 
-button#clear-form:hover,
-button#clear-form:focus {
+input#clear-form:hover,
+input#clear-form:focus {
   background: var(--dark-green);
   border: 2px solid var(--dark-green);
   color: white;

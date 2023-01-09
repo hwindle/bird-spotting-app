@@ -65,7 +65,8 @@ function populateSpeciesList(birdSpecies) {
   let selectElement = document.querySelector('select#species');
   // append options on innerHTML
   birdSpecies.forEach((bird) => {
-    selectElement.innerHTML += `<option value="${bird.optionName}">${bird.displayName}</option>\n`;
+    selectElement.innerHTML += `<option value="${bird.optionName}">
+      ${bird.displayName}</option>\n`;
   });
 }
 
@@ -135,28 +136,7 @@ function setBirdInfo(bird) {
   localStorage.setItem(bird.id.toString(), JSON.stringify(bird));
 }
 
-/**
- * Clear form function and event listener
- */
-function clearBirdForm(event) {
-  event.preventDefault();
-  const locationField = document.querySelector('#location');
-  const dateField = document.querySelector('#date-time');
-  const numberBirds = document.querySelector('#number');
-  const speciesField = document.querySelector('#species');
-  const maleField = document.querySelector('#gender-m');
-  locationField.value = '';
-  numberBirds.value = '';
-  dateField.value = '';
-  speciesField.value = 'mallard';
-  maleField.checked = true;
-}
-
-const clearFormButton = document.querySelector('button#clear-form');
-clearFormButton.addEventListener('click', clearBirdForm);
-
-// delete button stuff
-// add event listener for delete button
+// delete button function
 function deleteBird(e) {
   e.preventDefault();
   // remove the grandparent article from the DOM

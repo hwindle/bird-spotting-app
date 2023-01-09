@@ -55,7 +55,7 @@ div.bird-info {
 }
 
 p.hidden-id {
-  visibility: hidden;
+  display: none;
 }
 
 article.bird > div.buttons > .bird {

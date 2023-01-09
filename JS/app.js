@@ -91,9 +91,9 @@ function addBird(event) {
   const maleField = document.querySelector('#gender-m');
   // const femaleField = document.querySelector('#gender-f');
   const speciesField = document.querySelector('#species');
-  const checkboxArray = document.querySelectorAll('p.one-checkbox-option > input');
+  let checkboxArray = document.querySelectorAll('input.bird-option');
   let gender = '';
-  let statusOptions = '';
+  let statusOptions = [];
   // get gender of animal
   if (maleField.checked) {
     gender = 'male';
@@ -103,13 +103,14 @@ function addBird(event) {
   // set the id - adding random number to keep the id unique
   let id = dateField.value + Math.floor(Math.random() * 30000);
   id = id.toString();
-  for (const box in checkboxArray) {
-    if (box.checked) {
-      statusOptions += box.valueOf + ' ';
+  // loop through all status checkboxes, appending value to array.
+  for (const box of checkboxArray) {
+    //console.log(box.checked, box.value);
+    if (box.checked === true) {
+      statusOptions.push(box.value);
     }
   }
-  console.log('statuses string line 109: ', statusOptions);
-
+  statusOptions = statusOptions.join(' ');
   // add other fields here
   const birdObject = {
     id: id,
@@ -125,7 +126,8 @@ function addBird(event) {
   } catch(error) {
     console.log(error);
   }
-  getAllBirds();
+  // render (display) the newest bird sighting
+  renderBird(birdObject);
 }
 
 const addSubmitBtn = document.querySelector('input#add-submit');
@@ -160,15 +162,22 @@ const getLocalStorageItem = (item) => {
   }
 };
 
-function getAllBirds() {
+function getAllBirdData() {
   let birdArray = [];
   // go over each key in localStorage
   let keys = Object.keys(localStorage);
   for (const key of keys) {
     birdArray.push(getLocalStorageItem(key));
   }
-  //console.dir(birdArray);
-  birdArray.forEach((animal) => renderBird(animal));
+  return birdArray;
+}
+
+function displayAllBirds(birdArray) {
+  if (birdArray !== null) {
+    birdArray.forEach((animal) => renderBird(animal));
+  } else {
+    console.log('No current birds to display');
+  }
 }
 
 function renderBird(bird) {
@@ -203,5 +212,6 @@ function renderBird(bird) {
   sectionBirdList.append(article);
 }
 
-getAllBirds();
+const currentBirds = getAllBirdData();
+displayAllBirds(currentBirds);
 

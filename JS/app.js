@@ -81,7 +81,7 @@ populateSpeciesList(birdSpecies);
  * Third: create a setBirdInfo function to append object to an array
  * and store in local storage
  */
-var globalId = 0;
+var globalId;
 
 function addBird(event) {
   event.preventDefault();

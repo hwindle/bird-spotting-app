@@ -44,11 +44,45 @@ textarea {
   resize: vertical;
 }
 
-input#submit {
-  display: block;
+div.button-row {
+  /* span across 2 grid columns */
+  grid-column-start: 1;
+  grid-column-end: 3;
   width: 100%;
-  padding: 0.6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+input#add-submit, button#clear-form {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   background: var(--dark-green);
+  border: 2px solid var(--dark-green);
   color: white;
-  border-radius: 0.2em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input#add-submit:hover,
+input#add-submit:focus {
+  background-image: linear-gradient(90deg, var(--orange), var(--light-yellow));
+  border: 2px solid var(--orange);
+  color: black;
+}
+
+button#clear-form {
+  background-color: var(--form);
+  color: var(--dark-green);
+}
+
+button#clear-form:hover,
+button#clear-form:focus {
+  background: var(--dark-green);
+  border: 2px solid var(--dark-green);
+  color: white;
 }

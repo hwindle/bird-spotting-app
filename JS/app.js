@@ -88,7 +88,7 @@ function addBird(event) {
   const dateField = document.querySelector('#date-time');
   const numberBirds = document.querySelector('#number');
   const maleField = document.querySelector('#gender-m');
-  const femaleField = document.querySelector('#gender-f');
+  // const femaleField = document.querySelector('#gender-f');
   const speciesField = document.querySelector('#species');
   const checkboxArray = document.querySelectorAll('p.one-checkbox-option > input');
   let gender = '';
@@ -103,8 +103,8 @@ function addBird(event) {
   let id = dateField.value + Math.floor(Math.random() * 30000);
   id = id.toString();
   for (const box in checkboxArray) {
-    if (box.checked()) {
-      statusOptions += box.value + ' ';
+    if (box.checked) {
+      statusOptions += box.valueOf + ' ';
     }
   }
   console.log('statuses string line 109: ', statusOptions);

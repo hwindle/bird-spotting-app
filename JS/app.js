@@ -81,30 +81,48 @@ populateSpeciesList(birdSpecies);
  * Third: create a setBirdInfo function to append object to an array
  * and store in local storage
  */
-var globalId;
 
 function addBird(event) {
   event.preventDefault();
   const locationField = document.querySelector('#location');
+  const dateField = document.querySelector('#date-time');
   const numberBirds = document.querySelector('#number');
+  const maleField = document.querySelector('#gender-m');
+  const femaleField = document.querySelector('#gender-f');
   const speciesField = document.querySelector('#species');
-  if (numberBirds.value > 100) {
-    numberBirds.value = 100;
+  const checkboxArray = document.querySelectorAll('p.one-checkbox-option > input');
+  let gender = '';
+  let statusOptions = '';
+  // get gender of animal
+  if (maleField.checked) {
+    gender = 'male';
+  } else {
+    gender = 'female';
   }
-  globalId += 1;
+  // set the id - adding random number to keep the id unique
+  let id = dateField.value + Math.floor(Math.random() * 30000);
+  id = id.toString();
+  for (const box in checkboxArray) {
+    if (box.checked) {
+      statusOptions += box.value + ' ';
+    }
+  }
+  console.log('statuses string line 109: ', statusOptions);
+
   // add other fields here
   const birdObject = {
-    id: globalId.toString(),
+    id: id,
     location: locationField.value,
+    date: dateField.value.toString(),
     number: numberBirds.value,
+    gender: gender,
     species: speciesField.value,
+    status: statusOptions
   };
   try {
     setBirdInfo(birdObject);
-    console.dir(birdObject);
   } catch(error) {
     console.log(error);
-    console.dir(birdObject);
   }
   getAllBirds();
 }
@@ -123,11 +141,15 @@ function setBirdInfo(bird) {
 function clearBirdForm(event) {
   event.preventDefault();
   const locationField = document.querySelector('#location');
+  const dateField = document.querySelector('#date-time');
   const numberBirds = document.querySelector('#number');
   const speciesField = document.querySelector('#species');
+  const maleField = document.querySelector('#gender-m');
   locationField.value = '';
   numberBirds.value = '';
+  dateField.value = '';
   speciesField.value = 'mallard';
+  maleField.checked = true;
 }
 
 const clearFormButton = document.querySelector('button#clear-form');
@@ -165,7 +187,7 @@ function getAllBirds() {
   for (const key of keys) {
     birdArray.push(getLocalStorageItem(key));
   }
-  console.dir(birdArray);
+  //console.dir(birdArray);
   birdArray.forEach((animal) => renderBird(animal));
 }
 
@@ -185,7 +207,10 @@ function renderBird(bird) {
         <div class="bird-info">\n
           <p class="hidden-id">${bird.id}</p>\n
           <p class="location">${bird.location}</p>\n
-          <p class="number">Number: ${bird.number}</p>\n
+          <p class="number">Counted: ${bird.number}</p>\n
+          <p class="date-time">${bird.date}</p>\n
+          <p class="bird-gender">${bird.gender}</p>\n
+          <p class="status">${bird.status}</p>\n
         </div>\n
         </div>\n
       <div class="buttons">\n

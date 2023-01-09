@@ -1,12 +1,24 @@
 @media only screen and (max-width: 699px) {
-  .mobile-form-field {
-    display: block;
-    max-width: 80%;
-    margin: 0 auto;
-  }
-
   section#bird-list {
     display: block;
+  }
+
+  /*** Form ***/
+  form {
+    grid-template-areas: 
+    'location location'
+    'date date'
+    'number number'
+    'gender gender'
+    'species species'
+    'status status'
+    'submit submit'
+    'clear clear';
+  }
+
+  article.checkbox-flex-wrapper {
+    flex-direction: column;
+    align-items: start;
   }
 }
 

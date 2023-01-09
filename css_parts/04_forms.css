@@ -1,64 +1,106 @@
 form {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 1.4em;
   background-color: var(--form);
-  padding: 1em;
+  padding: 1rem;
   color: var(--form-text);
   border: 1px solid var(--form-text);
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(2rem, auto);
+  grid-gap: 1rem;
+  grid-template-areas: 
+    'location date'
+    'number gender'
+    'species species'
+    'status status'
+    'clear submit';
+}
+
+/* grids stuff */
+form > div.location {
+  grid-area: location;
+}
+
+form > div.date {
+  grid-area: date;
+}
+
+form > div.number-birds {
+  grid-area: number;
+}
+
+form > div.gender {
+  grid-area: gender;
+}
+
+form > div.species {
+  grid-area: species;
+}
+
+form > div.status {
+  grid-area: status;
+}
+
+button.clear {
+  grid-area: clear;
+}
+
+input.submit {
+  grid-area: submit;
 }
 
 /* form fields */
-.control {
+input, select {
   display: block;
-  width: 95%;
-  padding: 0.4em 0.6em;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
   color: var(--form-text);
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid var(--form-text);
-  border-radius: 0.4em;
+  border-radius: 0.4rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-div.form-row label {
-  padding-right: 1em;
+form > div > p {
+  font-weight: bold;
 }
 
-div.form-row {
-  grid-column: 1 / 3;
+label {
+  padding-right: 1rem;
 }
 
-div.form-row {
-  width: 95%;
-  margin: 0 auto;
-}
-
-textarea {
-  width: 95%;
-  margin: 0 auto;
-  min-height: 5em;
-  padding: 0.6em;
-  border: 1px solid var(--form-text);
-  border-radius: 0.4em;
-  resize: vertical;
-}
-
-div.button-row {
-  /* span across 2 grid columns */
-  grid-column-start: 1;
-  grid-column-end: 3;
-  width: 100%;
+article.radio-btn-flex-wrapper, 
+article.checkbox-flex-wrapper {
+  margin: 0.6rem 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+p.one-radio-option,
+p.one-checkbox-option {
+  display: inline-flex;
+  gap: 1rem;
+  vertical-align: middle;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+}
+
+input[type='checkbox'] ~ label {
+  vertical-align: middle;
 }
 
 input#add-submit, button#clear-form {
-  width: 100%;
-  padding: 0.6rem;
+  margin: auto 0;
+  height: 4rem;
   font-size: 1.5rem;
   font-weight: bold;
   background: var(--dark-green);

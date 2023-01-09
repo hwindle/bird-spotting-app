@@ -15,26 +15,71 @@
   </header>
   <section id="add-form">
     <form id="survey-form">
-      <div class="form-row">
+      <div class="location">
         <label for="location" id="name-label">Location
           <input type="text" id="location" placeholder="sighting location" class="control" pattern="[a-zA-Z -0-9]*" required>
         </label>
       </div>
-      <div class="form-row">
+      <div class="date">
+        <label for="date-time">Date
+          <input type="date" id="date-time" required />
+        </label>
+      </div>
+      <div class="number-birds">
         <label for="number" id="number-label">Number of birds
           <input type="number" id="number" min="0" max="50" placeholder="1" class="control" required>
         </label>
       </div>
-      <div class="form-row" id="bird-species-data">
+      <div class="gender">
+        <p class="radio-btn-heading">Gender</p>
+        <article class="radio-btn-flex-wrapper">
+          <p class="one-radio-option">
+            <input type="radio" name="gender" id="gender-m" class="fancy-radio-btn" value="male" checked />
+            <label for="gender-m">Male</label>
+          </p>
+          <p class="one-radio-option">
+            <input type="radio" name="gender" id="gender-f" class="fancy-radio-btn" value="female" />
+            <label for="gender-f">Female</label>
+          </p>
+        </article>
+      </div>
+      <div class="species" id="bird-species-data">
         <!-- the select gets filled in, or radio buttons are added here -->
         <label for="species">Type of bird</label>
         <select id="species" class="control">
         </select>
       </div>
-      <div class="button-row">
-        <button id="clear-form">Clear</button>
-        <input type="submit" id="add-submit" value="Submit" />
+      <div class="status">
+        <p>Bird Options</p>
+        <article class="checkbox-flex-wrapper">
+          <p class="one-checkbox-option">
+            <input type="checkbox" name="status" id="baby" />
+            <label for="baby">Baby (duckling)</label>
+          </p>
+          <p class="one-checkbox-option">
+            <input type="checkbox" name="status" id="angel-wing" />
+            <label for="angel-wing">Deformed wings</label>
+          </p>
+          <p class="one-checkbox-option">
+            <input type="checkbox" name="status" id="albino" />
+            <label for="albino">White Patches/stripes</label>
+          </p>
+          <p class="one-checkbox-option">
+            <input type="checkbox" name="status" id="limping" />
+            <label for="limping">Limping</label>
+          </p>
+          <p class="one-checkbox-option">
+            <input type="checkbox" name="status" id="tame" />
+            <label for="tame">Tame</label>
+          </p>
+          <p class="one-checkbox-option">
+            <input type="checkbox" name="status" id="plucked" />
+            <label for="plucked">Chest plucked</label>
+          </p>
+        </article>
       </div>
+      <button id="clear-form" class="clear">Clear</button>
+      <input class="submit" type="submit" id="add-submit" value="Submit" />
     </form>
   </section>
 

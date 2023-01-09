@@ -103,7 +103,7 @@ function addBird(event) {
   let id = dateField.value + Math.floor(Math.random() * 30000);
   id = id.toString();
   for (const box in checkboxArray) {
-    if (box.checked) {
+    if (box.checked()) {
       statusOptions += box.value + ' ';
     }
   }

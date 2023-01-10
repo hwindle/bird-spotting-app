@@ -212,6 +212,58 @@ function renderBird(bird) {
   sectionBirdList.append(article);
 }
 
+/**
+ * birdSummary function
+ * takes in array of objects from getAllBirdData();
+ * Also reads the display name for each bird from birdSpecies.
+ * Just transforms the data and counts the animals.
+ * 
+ * @param Array : array of objects with bird info
+ * @returns Array : array of smaller objects [{species, sum of birds, location}] with
+ * locations grouped together.
+ */
+function birdSummary(birdArray) {
+  let summaryArray = [];
+  if (birdArray !== null) {
+    // obtains distinct locations from an array of objects
+    // a set has no duplicate elements
+    const locations = [...new Set(birdArray.map(bird => bird.location))];
+    const animalTypes = [...new Set(birdArray.map(bird => bird.species))];
+    //console.log(locations);
+    
+    animalTypes.forEach((animal) => {
+      // {location: 'lake', 'mallard': 3} where 3 is total count
+      // each bird is a unique key.
+      let rowObject = {};
+      // group the locations together
+      for (const bird of birdArray) {
+        if (animal in rowObject) {
+          // if the animal is a key in rowObject, add the number
+          // of birds to the existing value
+          rowObject[animal] += 1;
+        } else {
+          // setting starting values
+          locations.forEach(location => {
+            if (location === bird.location && animal === bird.species) {
+              rowObject['location'] = location;
+              rowObject[animal] = parseInt(bird.number);
+            }
+          });
+        }
+      }
+      //console.log(summaryArray);
+      summaryArray.push(rowObject);  
+    });
+
+    // end of loops
+  } else {
+    console.log('No current birds to place in table. Line 230');
+  }
+  console.log(summaryArray);
+  return summaryArray;
+}
+
 const currentBirds = getAllBirdData();
+birdSummary(currentBirds);
 displayAllBirds(currentBirds);
 

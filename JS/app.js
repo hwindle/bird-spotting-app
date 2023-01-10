@@ -259,11 +259,41 @@ function birdSummary(birdArray) {
   } else {
     console.log('No current birds to place in table. Line 230');
   }
-  console.log(summaryArray);
+  //console.log(summaryArray);
   return summaryArray;
 }
 
+/**
+ * Display a table from birdSummary array of objects.
+ * 
+ * @params array (of { location: 'place', species: 2 })
+ * creates table rows, deletes the starter row
+ */
+function displayTableSummary(rows) {
+  if (!rows) {
+    return;
+  }
+  const tbodyElement = document.querySelector('.bird-summary-list > tbody');
+  const placeholderElement = document.querySelector('#test-tr-delete');
+  rows.forEach(row => {
+    const trElement = document.createElement('tr');
+    for (const key in row) {
+      if (key !== 'location') {
+        // get the species key and value (number)
+        trElement.innerHTML = `\n<td>${key}</td>\n<td>${row[key]}</td>`;
+      } 
+    }
+    trElement.innerHTML += `\n<td>${row.location}</td>`;
+    tbodyElement.append(trElement);
+  });
+  // remove 'no birds added' row from DOM
+  placeholderElement.remove();
+}
+
 const currentBirds = getAllBirdData();
-birdSummary(currentBirds);
+
 displayAllBirds(currentBirds);
+
+const tableRows = birdSummary(currentBirds);
+displayTableSummary(tableRows);
 

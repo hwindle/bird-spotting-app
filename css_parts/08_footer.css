@@ -2,8 +2,42 @@ footer {
   width: 100%;
   height: 25rem;
   margin: 2rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--dark-green);
   background-image: url('../pics/bg-bird.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+p.bird-rescue {
+  max-width: 50%;
+  padding: 2rem;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+p.bird-rescue > span.tel-no {
+  color: var(--dark-green);
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+p.bird-rescue > a,
+p.bird-rescue > a:visited {
+  color: var(--mid-green);
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+p.bird-rescue > a:hover,
+p.bird-rescue > a:focus {
+  color: black;
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-decoration: underline;
+  text-decoration-color: var(--mid-green);
 }

@@ -68,6 +68,11 @@
   table tbody tr td:nth-child(3):before {
     content: "Location";
   }
+
+  /*** FOOTER ***/
+  p.bird-rescue {
+    max-width: 70%;
+  }
 }
 
 /*** TABLETS ***/

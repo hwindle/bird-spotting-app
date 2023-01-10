@@ -290,6 +290,11 @@ function displayTableSummary(rows) {
   placeholderElement.remove();
 }
 
+
+// on document load or refresh
+
+// getting todays date as the default
+document.querySelector('#date-time').value = new Date().toISOString().slice(0, 10);
 const currentBirds = getAllBirdData();
 
 displayAllBirds(currentBirds);

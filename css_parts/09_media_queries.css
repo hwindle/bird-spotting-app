@@ -16,6 +16,11 @@
     'clear clear';
   }
 
+  input.clear {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
   article.checkbox-flex-wrapper {
     flex-direction: column;
     align-items: start;
@@ -70,6 +75,12 @@
   }
 
   /*** FOOTER ***/
+  footer {
+    height: 20rem;
+    background-size: contain;
+    background-position: bottom;
+  }
+
   p.bird-rescue {
     max-width: 70%;
   }

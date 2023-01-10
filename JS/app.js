@@ -276,8 +276,9 @@ function displayTableSummary(rows) {
     const trElement = document.createElement('tr');
     for (const key in row) {
       if (key !== 'location') {
+        const wildfowl = birdSpecies.filter(fowl => fowl.optionName === key);
         // get the species key and value (number)
-        trElement.innerHTML = `\n<td>${key}</td>\n<td>${row[key]}</td>`;
+        trElement.innerHTML = `\n<td>${wildfowl[0].displayName}</td>\n<td>${row[key]}</td>`;
       } 
     }
     trElement.innerHTML += `\n<td>${row.location}</td>`;

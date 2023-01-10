@@ -34,11 +34,11 @@
         <p class="radio-btn-heading">Gender</p>
         <article class="radio-btn-flex-wrapper">
           <p class="one-radio-option">
-            <input type="radio" name="gender" id="gender-m" class="fancy-radio-btn" value="male" checked />
+            <input type="radio" name="gender" id="gender-m" class="radio-input" value="male" checked />
             <label for="gender-m">Male</label>
           </p>
           <p class="one-radio-option">
-            <input type="radio" name="gender" id="gender-f" class="fancy-radio-btn" value="female" />
+            <input type="radio" name="gender" id="gender-f" class="radio-input" value="female" />
             <label for="gender-f">Female</label>
           </p>
         </article>
@@ -49,32 +49,85 @@
         <select id="species" class="control">
         </select>
       </div>
+      <!-- svg for animated tick checkbox -->
+      <svg class="checkbox-symbol">
+        <symbol id="check" viewbox="0 0 12 10">
+          <polyline
+            points="1.5 6 4.5 9 10.5 1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          ></polyline>
+        </symbol>
+      </svg>
       <div class="status">
         <p>Bird Options</p>
         <article class="checkbox-flex-wrapper">
           <p class="one-checkbox-option">
-            <input class="bird-option" type="checkbox" name="status" id="baby" value="Baby" />
-            <label for="baby">Baby (duckling)</label>
+            <input class="bird-option checkbox-input" type="checkbox" name="status" id="baby" value="Baby" />
+            <label class="checkbox" for="baby">
+              <span>
+                <svg width="14px" height="12px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <span>Baby (duckling)</span>
+            </label>
           </p>
           <p class="one-checkbox-option">
-            <input class="bird-option" type="checkbox" name="status" id="angel-wing" value="Angel wing" />
-            <label for="angel-wing">Deformed wings</label>
+            <input class="bird-option checkbox-input" type="checkbox" name="status" id="angel-wing" value="Angel wing" />
+            <label class="checkbox" for="angel-wing">
+              <span>
+                <svg width="14px" height="12px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <span>Wing deformity</span>
+            </label>
           </p>
           <p class="one-checkbox-option">
-            <input class="bird-option" type="checkbox" name="status" id="albino" value="White patches" />
-            <label for="albino">White Patches/stripes</label>
+            <input class="bird-option checkbox-input" type="checkbox" name="status" id="albino" value="White patches" />
+            <label class="checkbox" for="albino">
+              <span>
+                <svg width="14px" height="12px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <span>White Patches/stripes</span>
+            </label>
           </p>
           <p class="one-checkbox-option">
-            <input class="bird-option" type="checkbox" name="status" id="limping" value="Limping" />
-            <label for="limping">Limping</label>
+            <input class="bird-option checkbox-input" type="checkbox" name="status" id="limping" value="Limping" />
+            <label class="checkbox" for="limping">
+              <span>
+                <svg width="14px" height="12px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <span>Limping</span>
+            </label>
           </p>
           <p class="one-checkbox-option">
-            <input class="bird-option" type="checkbox" name="status" id="tame" value="Tame" />
-            <label for="tame">Tame</label>
+            <input class="bird-option checkbox-input" type="checkbox" name="status" id="tame" value="Tame" />
+            <label class="checkbox" for="tame">
+              <span>
+                <svg width="14px" height="12px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <span>Tame</span>
+            </label>
           </p>
           <p class="one-checkbox-option">
-            <input class="bird-option" type="checkbox" name="status" id="plucked" value="Chest plucked" />
-            <label for="plucked">Chest plucked</label>
+            <input class="bird-option checkbox-input" type="checkbox" name="status" id="plucked" value="Chest plucked" />
+            <label class="checkbox" for="plucked">
+              <span>
+                <svg width="14px" height="12px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <span>Chest plucked</span>
+            </label>
           </p>
         </article>
       </div>

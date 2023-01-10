@@ -234,22 +234,19 @@ function birdSummary(birdArray) {
     animalTypes.forEach((animal) => {
       // {location: 'lake', 'mallard': 3} where 3 is total count
       // each bird is a unique key.
-      let rowObject = {};
+      let rowObject = {
+        location: '',
+      };
+      rowObject[animal] = 0;
       // group the locations together
       for (const bird of birdArray) {
-        if (animal in rowObject) {
-          // if the animal is a key in rowObject, add the number
-          // of birds to the existing value
-          rowObject[animal] += 1;
-        } else {
-          // setting starting values
-          locations.forEach(location => {
-            if (location === bird.location && animal === bird.species) {
-              rowObject['location'] = location;
-              rowObject[animal] = parseInt(bird.number);
-            }
-          });
-        }
+        // setting starting values
+        locations.forEach(location => {
+          if (location === bird.location && animal === bird.species) {
+            rowObject['location'] = location;
+            rowObject[animal] += parseInt(bird.number);
+          }
+        });
       }
       //console.log(summaryArray);
       summaryArray.push(rowObject);  
@@ -291,7 +288,7 @@ function displayTableSummary(rows) {
 }
 
 
-// on document load or refresh
+// run on document load or refresh
 
 // getting todays date as the default
 document.querySelector('#date-time').value = new Date().toISOString().slice(0, 10);

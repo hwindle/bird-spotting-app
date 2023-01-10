@@ -20,6 +20,54 @@
     flex-direction: column;
     align-items: start;
   }
+
+  /*** TABLE - bird summary ***/
+  table {
+    display: block;
+  }
+  
+  table > *, table tr, table td, table th {
+    display: block;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    height: auto;
+    padding: 0.5rem 0;
+  }
+
+  table tbody tr td {
+    padding-left: 45%;
+    margin-bottom: 0.75rem;
+  }
+
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+
+  table tbody tr td:before {
+    position: absolute;
+    font-weight: 700;
+    width: 40%;
+    left: 0.75rem;
+    top: 0;
+  }
+
+  /* set header text on mobile */
+  table tbody tr td:nth-child(1):before {
+    content: "Species";
+  }
+
+  table tbody tr td:nth-child(2):before {
+    content: "Total Count";
+  }
+
+  table tbody tr td:nth-child(3):before {
+    content: "Location";
+  }
 }
 
 /*** TABLETS ***/

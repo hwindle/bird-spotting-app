@@ -8,11 +8,11 @@
 </head>
 <body>
   
-<main>
   <header>
     <h1 id="title">Bird Spotting</h1>
     <p id="description">Please input any bird sightings, or remove any birds that have disappeared.</p>
   </header>
+<main>
   <section id="add-form">
     <form id="survey-form">
       <div class="location">
@@ -86,23 +86,34 @@
   <!-- List of birds -->
   <h2 class="section-title">Current Birds</h2>
   <section id="bird-list">
-    <!-- <article class="bird">
-      <h2 class="bird-title">Species</h2>
-      <div class="flex-wrapper">
-        <img class="species-pic" src="" alt="pic-of-bird">
-        <div class="bird-info">
-          <p class="location">Location</p>
-          <p class="number">Number of birds</p>
-          <p class="date-time">Date - time</p>
-          <p class="status">Status</p>
-        </div>
-      </div>
-      <div class="buttons">
-        <button class="delete bird">Delete</button>
-      </div>
-    </article> -->
+    <!-- birds added here as article elements -->
+  </section>
+  <section id="bird-summary">
+    <h3 class="section-title">Summary</h3>
+    <table class="bird-summary-list">
+      <thead>
+        <tr>
+          <th>Species</th>
+          <th>Total Count</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="test-tr-delete">
+          <td>No birds added</td>
+          <td>0</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </main>
+<footer>
+  <p class="bird-rescue">
+    If you find an injured bird phone Linjoy Wildlife
+    Sanctuary on <span class="tel-no"></span> or visit <a href="#" target="_blank">their website</a> for more information.
+  </p>
+</footer>
 
   <!-- scripts -->
   <script src="JS/app.js"></script>

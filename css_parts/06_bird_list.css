@@ -6,8 +6,9 @@ section#bird-list {
   grid-gap: 2rem;
 }
 
-h2.section-title {
+.section-title {
   margin: 2rem 0;
+  font-size: 2.4rem;
   text-align: center;
   color: var(--form);
 }

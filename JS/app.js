@@ -192,6 +192,8 @@ function renderBird(bird) {
   const wildfowl = birdSpecies.filter(fowl => fowl.optionName === bird.species);
   const birdPic = wildfowl[0].picUrl;
   const birdCommonName = wildfowl[0].displayName;
+  const formDate = new Date(bird.date);
+  const displayDate = formDate.toLocaleDateString()
   article.innerHTML = `<h2 class="bird-title">${birdCommonName}</h2>\n
       <div class="flex-wrapper">\n
         <img class="species-pic" src="${birdPic}" alt="${birdCommonName}" />\n
@@ -199,7 +201,7 @@ function renderBird(bird) {
           <p class="hidden-id">${bird.id}</p>\n
           <p class="location">${bird.location}</p>\n
           <p class="number">Counted: ${bird.number}</p>\n
-          <p class="date-time">${bird.date}</p>\n
+          <p class="date-time">${displayDate}</p>\n
           <p class="bird-gender">${bird.gender}</p>\n
           <p class="status">${bird.status}</p>\n
         </div>\n

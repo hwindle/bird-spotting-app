@@ -86,11 +86,29 @@
   }
 }
 
+/** bigger mobile **/
+@media screen and (min-width: 700px) and (max-width: 849px) {
+  section#bird-list {
+    display: block;
+  }
+}
+
 /*** TABLETS ***/
-@media only screen and (min-width: 700px) and (max-width: 1024px) {
+@media only screen and (min-width: 850px) and (max-width: 1024px) {
   section#bird-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
 
+/** wide screens **/
+@media only screen and (min-width: 1921px) {
+  section#bird-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  img.species-pic {
+    max-width: 300px;
+  }
 }

@@ -128,6 +128,7 @@ function addBird(event) {
   }
   // render (display) the newest bird sighting
   renderBird(birdObject);
+  onCurrentBirdsChange(true);
 }
 
 const addSubmitBtn = document.querySelector('input#add-submit');
@@ -148,6 +149,7 @@ function deleteBird(e) {
   //console.log('delete: ', idElement.textContent);
   localStorage.removeItem(idElement.textContent);
   article.remove();
+  onCurrentBirdsChange(true);
 }
 
 /**
@@ -212,6 +214,18 @@ function renderBird(bird) {
   sectionBirdList.append(article);
 }
 
+// function for updating the birdSummary table on currentBirds change
+function onCurrentBirdsChange(boolFlag) {
+  if (boolFlag) {
+    const currentBirds = getAllBirdData();
+    const tableRows = birdSummary(currentBirds);
+    displayTableSummary(tableRows);
+  } else {
+    console.log('No birds changed. Line 222');
+  }
+}
+
+
 /**
  * birdSummary function
  * takes in array of objects from getAllBirdData();
@@ -271,7 +285,9 @@ function displayTableSummary(rows) {
     return;
   }
   const tbodyElement = document.querySelector('.bird-summary-list > tbody');
-  const placeholderElement = document.querySelector('#test-tr-delete');
+  const oldRowElements = document.querySelectorAll('.bird-summary-list > tbody > tr');
+  // remove older bird summary calculations and placeholder from DOM
+  oldRowElements.forEach(tr => tr.remove());
   rows.forEach(row => {
     const trElement = document.createElement('tr');
     for (const key in row) {
@@ -283,9 +299,7 @@ function displayTableSummary(rows) {
     }
     trElement.innerHTML += `\n<td>${row.location}</td>`;
     tbodyElement.append(trElement);
-  });
-  // remove 'no birds added' row from DOM
-  placeholderElement.remove();
+  }); 
 }
 
 

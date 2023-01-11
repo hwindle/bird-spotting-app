@@ -248,7 +248,7 @@ input#add-submit:focus {
   color: black;
 }
 
-input#clear-form {
+input#clear-form.clear {
   background-color: var(--form);
   color: var(--dark-green);
 }
